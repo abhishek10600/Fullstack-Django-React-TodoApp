@@ -1,11 +1,17 @@
 import { useState } from "react";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { toast } from "react-hot-toast";
 
 const Navbar = () => {
   const [showNavMenu, setShowNavMenu] = useState(false);
   const toggleMenu = () => {
     setShowNavMenu(!showNavMenu);
+  };
+  const token = localStorage.getItem("Token");
+  const handleLogout = () => {
+    localStorage.removeItem("Token");
+    toast.success("Logged out sucessfully!");
   };
   return (
     <div className="text-white flex items-center justify-between h-24 px-4 md:mx-auto md:max-w-[1240px]">
@@ -13,13 +19,20 @@ const Navbar = () => {
         Todofy
       </Link>
       <ul className="md:flex md:gap-20 md:text-xl hidden">
-        <Link className="" to="/login">
-          Login
-        </Link>
-        <Link className="" to="/register">
-          Register
-        </Link>
-        <li>Logout</li>
+        {token ? (
+          <button onClick={handleLogout}>
+            <Link>Logout</Link>
+          </button>
+        ) : (
+          <div className="md:flex md:gap-20 md:text-xl hidden">
+            <Link className="" to="/login">
+              Login
+            </Link>
+            <Link className="" to="/register">
+              Register
+            </Link>
+          </div>
+        )}
       </ul>
       {/* Condition to show the menu and close button in mobile devices */}
       <div onClick={toggleMenu} className="block md:hidden">
@@ -41,13 +54,24 @@ const Navbar = () => {
           <Link className="border-b border-gray-500 py-2" to="/">
             Home
           </Link>
-          <Link className="border-b border-gray-500 py-2" to="/login">
-            Login
-          </Link>
-          <Link className="border-b border-gray-500 py-2" to="/register">
-            Register
-          </Link>
-          <Link className="border-b border-gray-500 py-2">Logout</Link>
+          {token ? (
+            // <Link className="border-b border-gray-500 py-2">Logout</Link>
+            <button
+              onClick={handleLogout}
+              className="border-b border-gray-500 py-2 flex"
+            >
+              Logout
+            </button>
+          ) : (
+            <div className="flex flex-col gap-10 text-xl">
+              <Link className="border-b border-gray-500 py-2" to="/login">
+                Login
+              </Link>
+              <Link className="border-b border-gray-500 py-2" to="/register">
+                Register
+              </Link>
+            </div>
+          )}
         </ul>
       </div>
     </div>
