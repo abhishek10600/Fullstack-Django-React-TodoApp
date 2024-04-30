@@ -1,3 +1,3 @@
-## BACKEND API URL
+## Deployed link
 
-https://todofy-zonu.onrender.com/
+https://todofyapp.onrender.com/
