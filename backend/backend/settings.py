@@ -64,7 +64,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    os.getenv("FRONTEND_URL")
+    "https://todofyapp.onrender.com"
 ]
 
 ROOT_URLCONF = 'backend.urls'
