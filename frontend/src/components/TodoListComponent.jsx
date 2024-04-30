@@ -9,7 +9,7 @@ const TodoListComponent = () => {
   const token = localStorage.getItem("Token");
   const getTodos = async () => {
     try {
-      const res = await axios.get("http://localhost:8000/todos/list/", {
+      const res = await axios.get("https://todofy-zonu.onrender.com/todos/list/", {
         headers: {
           Authorization: `token ${token}`,
         },

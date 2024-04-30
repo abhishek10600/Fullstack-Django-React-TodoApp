@@ -12,11 +12,14 @@ const EditTodo = () => {
   const token = localStorage.getItem("Token");
   const getTodoDetail = async (id) => {
     try {
-      const res = await axios.get(`http://localhost:8000/todos/${id}/`, {
-        headers: {
-          Authorization: `token ${token}`,
-        },
-      });
+      const res = await axios.get(
+        `https://todofy-zonu.onrender.com/todos/${id}/`,
+        {
+          headers: {
+            Authorization: `token ${token}`,
+          },
+        }
+      );
       setTodoTitle(res.data.title);
       setTodoDescription(res.data.description);
     } catch (error) {
@@ -33,7 +36,7 @@ const EditTodo = () => {
     try {
       setIsLoading(true);
       const res = await axios.put(
-        `http://localhost:8000/todos/${id}/`,
+        `https://todofy-zonu.onrender.com/todos/${id}/`,
         {
           title: todoTitle,
           description: todoDescription,

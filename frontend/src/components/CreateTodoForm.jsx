@@ -13,7 +13,7 @@ const CreateTodoForm = () => {
     try {
       setIsLoading(true);
       const res = await axios.post(
-        "http://localhost:8000/todos/list/",
+        "https://todofy-zonu.onrender.com/todos/list/",
         {
           title,
           description,

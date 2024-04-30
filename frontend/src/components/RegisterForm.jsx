@@ -18,11 +18,14 @@ const RegisterForm = () => {
     if (password === confirmPassword) {
       try {
         setIsLoading(true);
-        const res = await axios.post("http://localhost:8000/user/register/", {
-          username,
-          email,
-          password,
-        });
+        const res = await axios.post(
+          "https://todofy-zonu.onrender.com/user/register/",
+          {
+            username,
+            email,
+            password,
+          }
+        );
         toast.success("Your account created successfully!");
         setIsLoading(false);
         navigate("/login");

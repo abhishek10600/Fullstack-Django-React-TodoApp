@@ -14,10 +14,13 @@ const LoginForm = () => {
     ev.preventDefault();
     try {
       setIsLoading(true);
-      const res = await axios.post("http://localhost:8000/user/login/", {
-        username,
-        password,
-      });
+      const res = await axios.post(
+        "https://todofy-zonu.onrender.com/user/login/",
+        {
+          username,
+          password,
+        }
+      );
       setIsLoading(false);
       localStorage.setItem("Token", res.data.token);
       toast.success("Logged in successfully!");

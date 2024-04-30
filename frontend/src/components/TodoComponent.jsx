@@ -7,7 +7,7 @@ const TodoComponent = ({ todoId, todoTitle, todoDescription, setRefresh }) => {
   const handleDeleteTodo = async (todoId) => {
     try {
       const res = await axios.delete(
-        `http://localhost:8000/todos/${todoId.todoId}/`,
+        `https://todofy-zonu.onrender.com/todos/${todoId.todoId}/`,
         {
           headers: {
             Authorization: `token ${token}`,
